@@ -1,11 +1,16 @@
+"use client";
 import EmployeesPage from "@/page/dashboard";
+import configureStore from "@/store/configureStore";
 import Image from "next/image";
+import { Provider } from "react-redux";
 
 export default function Home() {
   return (
-    <div>
-      Home page
-      <EmployeesPage />
-    </div>
+    <Provider store={configureStore}>
+      <div>
+        Home page
+        <EmployeesPage />
+      </div>
+    </Provider>
   );
 }

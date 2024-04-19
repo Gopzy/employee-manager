@@ -1,26 +1,36 @@
 "use client";
+import getEmployees from "@/store/action/getEmployees";
+import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const EmployeesPage = () => {
+  const dispatch = useDispatch();
   const [employees, setEmployees] = useState([]);
 
+  const { employeeData } = useSelector((state) => state?.employees) || [];
+
+  console.log("employee from redux::::::", employeeData);
+
   useEffect(() => {
-    fetch("http://localhost:8080/api/employees")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("response data::", data);
-        setEmployees(data);
-      })
-      .catch((error) => console.error("Error fetching employees:", error));
+    // fetchEmployees();
+    dispatch(getEmployees());
   }, []);
+
+  // const fetchEmployees = async () => {
+  //   try {
+  //     const response = await axios.get("http://localhost:8080/api/employees");
+  //     setEmployees(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching employees:", error);
+  //   }
+  // };
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:8080/api/employees/${id}`, {
-        method: "DELETE",
-      });
+      await axios.delete(`http://localhost:8080/api/employees/${id}`);
       // Update state to reflect deletion
-      setEmployees(employees.filter((employee) => employee._id !== id));
+      // setEmployees(employees.filter((employee) => employee._id !== id));
     } catch (error) {
       console.error("Error deleting employee:", error);
     }
@@ -30,7 +40,7 @@ const EmployeesPage = () => {
     <div>
       {/* <h1>Employee Data</h1> */}
       <ul>
-        {employees.map((employee) => (
+        {employeeData.map((employee) => (
           <li key={employee?.id}>
             {employee?.first_name} - {employee?.last_name}
             <br />{" "}
