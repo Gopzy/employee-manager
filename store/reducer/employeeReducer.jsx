@@ -1,6 +1,6 @@
 import {
+  GET_EMPLOYEES,
   GET_EMPLOYEES_FAILED,
-  GET_EMPLOYEES_REQUEST,
   GET_EMPLOYEES_SUCCESS,
 } from "../action/actionType";
 
@@ -10,9 +10,9 @@ const initialState = {
 };
 
 const employeesReducer = (state = initialState, action) => {
-  console.log("employeesReducer ::::", action.payload);
+  // console.log("employeesReducer ::::", action.payload);
   switch (action.type) {
-    case GET_EMPLOYEES_REQUEST:
+    case GET_EMPLOYEES:
       return {
         ...state,
         employeeData: [],

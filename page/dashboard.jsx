@@ -1,55 +1,42 @@
 "use client";
-import getEmployees from "@/store/action/getEmployees";
+import Employee from "@/components/employee";
+import { deleteEmployees, getEmployees } from "@/store/action/employeeAction";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import "../app/globals.css";
 
-const EmployeesPage = () => {
+const Dashboard = () => {
   const dispatch = useDispatch();
   const [employees, setEmployees] = useState([]);
 
   const { employeeData } = useSelector((state) => state?.employees) || [];
 
-  console.log("employee from redux::::::", employeeData);
+  console.log("employee from redux::::::", employeeData, employees);
 
   useEffect(() => {
-    // fetchEmployees();
     dispatch(getEmployees());
   }, []);
 
-  // const fetchEmployees = async () => {
-  //   try {
-  //     const response = await axios.get("http://localhost:8080/api/employees");
-  //     setEmployees(response.data);
-  //   } catch (error) {
-  //     console.error("Error fetching employees:", error);
-  //   }
-  // };
+  // useEffect(() => {
+  //   setEmployees(employeeData);
+  // }, [employeeData]);
 
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`http://localhost:8080/api/employees/${id}`);
-      // Update state to reflect deletion
-      // setEmployees(employees.filter((employee) => employee._id !== id));
-    } catch (error) {
-      console.error("Error deleting employee:", error);
-    }
+  const handleDelete = (id) => {
+    dispatch(deleteEmployees(id, () => dispatch(getEmployees())));
+  };
+
+  const renderEmployees = (data) => {
+    return <Employee employeeData={data} onDelete={handleDelete} />;
   };
 
   return (
     <div>
-      {/* <h1>Employee Data</h1> */}
-      <ul>
-        {employeeData.map((employee) => (
-          <li key={employee?.id}>
-            {employee?.first_name} - {employee?.last_name}
-            <br />{" "}
-            <button onClick={() => handleDelete(employee?._id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+      <div className="grid grid-cols-5 gap-4">
+        {employeeData.map((employee) => renderEmployees(employee))}
+      </div>
     </div>
   );
 };
 
-export default EmployeesPage;
+export default Dashboard;

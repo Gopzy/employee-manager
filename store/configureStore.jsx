@@ -8,7 +8,6 @@ const sagaMiddleware = createSagaMiddleware();
 export default configureStore({
   reducer: {
     employees: employeesReducer,
-    // cart: cartReducer.reducer,
   },
   middleware: (gDM) => gDM().concat(sagaMiddleware),
 });
