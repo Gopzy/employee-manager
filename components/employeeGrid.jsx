@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 
-const Employee = ({ employeeData, onDelete }) => {
+const EmployeeGrid = ({ employeeData, onDelete }) => {
   const { photo, first_name, email, number, gender, _id } = employeeData;
   return (
-    <div className="flex flex-col w-80 max-w-md border border-gray-200 rounded-lg overflow-hidden shadow-md">
-      <img src={photo} alt={"title"} className="w-80 h-45 object-cover" />
+    // w-80 max-w-md
+    <div className="flex flex-col : border border-gray-200 rounded-lg overflow-hidden shadow-md">
+      {/* w-80 h-45 */}
+      <img src={photo} alt={"title"} className="object-cover" />
       <div className="flex  justify-between p-4">
         <div className="">
           <h2 className="text-lg font-semibold">{first_name}</h2>
-          <p className="text-sm text-gray-600">{email}</p>
+          <p className="text-sm text-gray-600">{email.substring(0, 15)}</p>
           <p className="text-sm text-gray-600">{number}</p>
           <p className="text-sm text-gray-600">
             {gender === "F" ? "Female" : "Male"}
@@ -27,4 +29,4 @@ const Employee = ({ employeeData, onDelete }) => {
   );
 };
 
-export default Employee;
+export default EmployeeGrid;

@@ -10,6 +10,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const toggleGrid = () => {
+    setIsGrid(!isGrid);
+  };
+
+  const isGrid = false;
+
   return (
     <html lang="en">
       <body className={inter.className}>
