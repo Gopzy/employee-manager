@@ -10,6 +10,9 @@ import {
   ADD_EMPLOYEES,
   ADD_EMPLOYEES_SUCCESS,
   ADD_EMPLOYEES_FAILED,
+  UPDATE_EMPLOYEES,
+  UPDATE_EMPLOYEES_SUCCESS,
+  UPDATE_EMPLOYEES_FAILED,
 } from "../action/actionType";
 
 const EMPLOYEES_API = "http://localhost:8080/api/employees";
@@ -27,7 +30,6 @@ export function* getEmployeesSaga({ success, failed }) {
 }
 
 export function* addEmployeesSaga({ payload, success, failed }) {
-  console.log("addEmployeesSaga triggered :::::", payload);
   try {
     yield call(axios.post, "http://localhost:8080/api/employees", payload);
 
@@ -36,6 +38,26 @@ export function* addEmployeesSaga({ payload, success, failed }) {
   } catch (error) {
     failed?.();
     yield put({ type: ADD_EMPLOYEES_FAILED, payload: error });
+  }
+}
+
+export function* updateEmployeesSaga({
+  payload: { id, requestParams },
+  success,
+  failed,
+}) {
+  try {
+    yield call(
+      axios.put,
+      `http://localhost:8080/api/employees/${id}`,
+      requestParams
+    );
+
+    success?.();
+    yield put({ type: UPDATE_EMPLOYEES_SUCCESS });
+  } catch (error) {
+    failed?.();
+    yield put({ type: UPDATE_EMPLOYEES_FAILED, payload: error });
   }
 }
 
@@ -54,5 +76,6 @@ export function* deleteEmployeesSaga({ payload, success, failed }) {
 export function* watchGetEmployee() {
   yield takeLatest(GET_EMPLOYEES, getEmployeesSaga);
   yield takeLatest(ADD_EMPLOYEES, addEmployeesSaga);
+  yield takeLatest(UPDATE_EMPLOYEES, updateEmployeesSaga);
   yield takeLatest(DELETE_EMPLOYEES, deleteEmployeesSaga);
 }

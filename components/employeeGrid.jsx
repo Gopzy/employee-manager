@@ -1,6 +1,7 @@
+import Link from "next/link";
 import React, { Component } from "react";
 
-const EmployeeGrid = ({ employeeData, onDelete }) => {
+const EmployeeGrid = ({ employeeData, onDelete, onEdit }) => {
   const { photo, first_name, email, number, gender, _id } = employeeData;
   return (
     // w-80 max-w-md
@@ -16,7 +17,20 @@ const EmployeeGrid = ({ employeeData, onDelete }) => {
             {gender === "F" ? "Female" : "Male"}
           </p>
         </div>
-        <div className="pt-14">
+        <div className="flex flex-col-1 pt-14 gap-2">
+          {/* <Link
+            href={{
+              pathname: "/employee/edit",
+              query: { id: _id },
+            }}
+          > */}
+          <button
+            onClick={() => onEdit(_id)}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+          >
+            Edit
+          </button>
+          {/* </Link> */}
           <button
             onClick={() => onDelete(_id)}
             className="px-4 py-2  bg-red-900 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"

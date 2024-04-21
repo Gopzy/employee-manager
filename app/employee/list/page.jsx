@@ -20,16 +20,18 @@ const page = () => {
     dispatch(getEmployees());
   }, []);
 
-  // useEffect(() => {
-  //   setEmployees(employeeData);
-  // }, [employeeData]);
-
   const handleDelete = (id) => {
     dispatch(deleteEmployees(id, () => dispatch(getEmployees())));
   };
 
   const renderEmployeeGrid = (data) => {
-    return <EmployeeGrid employeeData={data} onDelete={handleDelete} />;
+    return (
+      <EmployeeGrid
+        employeeData={data}
+        onDelete={handleDelete}
+        onEdit={(id) => router.push(`/employee/edit?id=${id}`)}
+      />
+    );
   };
 
   return (

@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { addEmployees } from "@/store/action/employeeAction";
-import { useDispatch } from "react-redux";
+import { addEmployees, updateEmployees } from "@/store/action/employeeAction";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const defaultFormObj = {
   first_name: "",
@@ -10,13 +11,26 @@ const defaultFormObj = {
   number: "",
   gender: "",
   _id: null,
-  // id: "4",
+  // id: 4,
   photo: "https://randomuser.me/api/portraits/men/75.jpg",
 };
 
-const EmployeeForm = () => {
+const EmployeeForm = ({ employeeId }) => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(defaultFormObj);
+
+  const { employeeData } = useSelector((state) => state?.employees) || [];
+
+  const editEmployeeObj = employeeData?.filter(
+    (employee) => employee._id === employeeId
+  );
+  // console.log("EmployeeForm :::::::", formData, editEmployeeObj?.[0]);
+
+  useEffect(() => {
+    if (editEmployeeObj.length) {
+      setFormData(editEmployeeObj?.[0]);
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,27 +40,23 @@ const EmployeeForm = () => {
     }));
   };
 
-  const clearFormData = () => {
-    setFormData({
-      first_name: "",
-      last_name: "",
-      email: "",
-      number: "",
-      gender: "",
-      // id: "",
-    });
-  };
-
   const handleSubmit = () => {
+    console.log("handleSubmit :::::", formData);
+
+    const updatePayload = { id: employeeId, requestParams: formData };
+
     dispatch(
-      addEmployees(formData, () => alert("Employee created successfully!"))
+      employeeId
+        ? updateEmployees(updatePayload, () =>
+            alert("Employee updated successfully!")
+          )
+        : addEmployees(formData, () => alert("Employee created successfully!"))
     );
   };
 
-  const { first_name, last_name, email, number, gender } = formData;
+  // const { first_name, last_name, email, number, gender } = formData;
   return (
     <div>
-      {/* <h2>Create Employee</h2> */}
       <form onSubmit={handleSubmit}>
         <label>
           First Name:
@@ -61,7 +71,7 @@ const EmployeeForm = () => {
             }}
             type="text"
             name="first_name"
-            value={first_name}
+            value={formData?.first_name}
             onChange={handleChange}
           />
         </label>
@@ -79,7 +89,7 @@ const EmployeeForm = () => {
             }}
             type="text"
             name="last_name"
-            value={last_name}
+            value={formData?.last_name}
             onChange={handleChange}
           />
         </label>
@@ -97,7 +107,7 @@ const EmployeeForm = () => {
             }}
             type="email"
             name="email"
-            value={email}
+            value={formData?.email}
             onChange={handleChange}
           />
         </label>
@@ -115,7 +125,7 @@ const EmployeeForm = () => {
             }}
             type="text"
             name="number"
-            value={number}
+            value={formData?.number}
             onChange={handleChange}
           />
         </label>
@@ -133,7 +143,7 @@ const EmployeeForm = () => {
             }}
             type="text"
             name="gender"
-            value={gender}
+            value={formData?.gender}
             onChange={handleChange}
           />
         </label>
