@@ -171,11 +171,7 @@ const EmployeeForm = ({ employeeId }) => {
           {errors.gender && <p style={styles.error}>{errors.gender}</p>}
         </label>
         <br />
-        <button
-          onClick={onClickSave}
-          className=" bg-slate-500 px-5 mt-5 text-white"
-          type="submit"
-        >
+        <button className=" bg-slate-500 px-5 mt-5 text-white" type="submit">
           {employeeId ? "Save" : "Add"}
           <br />
         </button>
