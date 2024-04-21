@@ -4,9 +4,9 @@ const EmployeeGrid = ({ employeeData, onDelete }) => {
   const { photo, first_name, email, number, gender, _id } = employeeData;
   return (
     // w-80 max-w-md
-    <div className="flex flex-col : border border-gray-200 rounded-lg overflow-hidden shadow-md">
+    <div className="flex flex-col  max-w-md border border-gray-200 rounded-lg overflow-hidden shadow-md">
       {/* w-80 h-45 */}
-      <img src={photo} alt={"title"} className="object-cover" />
+      <img src={photo} alt={"title"} className="object-cover " />
       <div className="flex  justify-between p-4">
         <div className="">
           <h2 className="text-lg font-semibold">{first_name}</h2>

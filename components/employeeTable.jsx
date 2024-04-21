@@ -1,7 +1,7 @@
 import React from "react";
 
 const EmployeeTable = ({ employees, onDelete }) => {
-  console.log("EmployeeTable >>>>>>>>", employees);
+  // console.log("EmployeeTable >>>>>>>>", employees);
 
   return (
     <table className="min-w-full divide-y divide-gray-200">
@@ -52,11 +52,11 @@ const EmployeeTable = ({ employees, onDelete }) => {
         </tr>
       </thead>
       <tbody className="bg-white divide-y divide-gray-200">
-        {employees?.map((employee) => {
+        {employees?.map((employeeData) => {
           const { photo, first_name, last_name, email, number, gender, _id } =
-            employee;
+            employeeData;
           return (
-            <tr key={employee.id}>
+            <tr key={_id}>
               <td className="px-6 py-4 whitespace-nowrap">
                 <img className="h-8 w-8 rounded" src={photo} alt={first_name} />
               </td>

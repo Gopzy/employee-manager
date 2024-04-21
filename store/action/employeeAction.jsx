@@ -1,7 +1,14 @@
-import { DELETE_EMPLOYEES, GET_EMPLOYEES } from "./actionType";
+import { ADD_EMPLOYEES, DELETE_EMPLOYEES, GET_EMPLOYEES } from "./actionType";
 
 const getEmployees = (success, failed) => ({
   type: GET_EMPLOYEES,
+  success,
+  failed,
+});
+
+const addEmployees = (payload, success, failed) => ({
+  type: ADD_EMPLOYEES,
+  payload,
   success,
   failed,
 });
@@ -13,4 +20,4 @@ const deleteEmployees = (payload, success, failed) => ({
   failed,
 });
 
-export { getEmployees, deleteEmployees };
+export { getEmployees, deleteEmployees, addEmployees };
