@@ -1,8 +1,6 @@
 import React from "react";
 
 const EmployeeTable = ({ employees, onDelete }) => {
-  // console.log("EmployeeTable >>>>>>>>", employees);
-
   return (
     <table className="min-w-full divide-y divide-gray-200">
       <thead className=" bg-green-500">

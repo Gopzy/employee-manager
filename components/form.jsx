@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Validation from "./validation";
 
-const defaultFormObj = {
+const formObj = {
   first_name: "",
   last_name: "",
   email: "",
@@ -20,7 +20,7 @@ const defaultFormObj = {
 const EmployeeForm = ({ employeeId }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState(defaultFormObj);
+  const [formData, setFormData] = useState(formObj);
 
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
@@ -37,7 +37,7 @@ const EmployeeForm = ({ employeeId }) => {
     }
   }, []);
 
-  const handleChange = (e) => {
+  const onChangeFormValue = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
@@ -51,129 +51,115 @@ const EmployeeForm = ({ employeeId }) => {
     Validation(formData, setErrors, setIsFormValid);
   }, [first_name, last_name, number, gender, email]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     const updatePayload = { id: employeeId, requestParams: formData };
     if (isFormValid) {
       dispatch(
         employeeId
-          ? updateEmployees(updatePayload, () =>
-              alert("Employee updated successfully!")
-            )
-          : addEmployees(
-              formData,
-              () => alert("Employee created successfully!")
-              // () => router.push("/employee/list")
-            )
+          ? updateEmployees(updatePayload, () => router.push("/employee/list"))
+          : addEmployees(formData, () => router.push("/employee/list"))
       );
     }
   };
 
   return (
-    <div className=" px-7">
+    <div className=" px-7 ">
       <form onSubmit={handleSubmit}>
-        <label>
-          First Name:
-          <br />
-          <input
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              padding: "8px",
-              //   width: "100%",
-              boxSizing: "border-box",
-            }}
-            type="text"
-            name="first_name"
-            placeholder="First Name"
-            value={formData?.first_name}
-            onChange={handleChange}
-          />
-          {errors.first_name && <p style={styles.error}>{errors.first_name}</p>}
-        </label>
-        <br />
-        <label>
-          Last Name:
-          <br />
-          <input
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              padding: "8px",
-              //   width: "100%",
-              boxSizing: "border-box",
-            }}
-            type="text"
-            name="last_name"
-            placeholder="Last Name"
-            value={formData?.last_name}
-            onChange={handleChange}
-          />
-          {errors.last_name && <p style={styles.error}>{errors.last_name}</p>}
-        </label>
-        <br />
-        <label>
-          Email:
-          <br />
-          <input
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              padding: "8px",
-              //   width: "100%",
-              boxSizing: "border-box",
-            }}
-            type="email"
-            name="email"
-            placeholder="someone@gmail.com"
-            value={formData?.email}
-            onChange={handleChange}
-          />
-          {errors.email && <p style={styles.error}>{errors.email}</p>}
-        </label>
-        <br />
-        <label>
-          Number:
-          <br />
-          <input
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              padding: "8px",
-              //   width: "100%",
-              boxSizing: "border-box",
-            }}
-            type="text"
-            name="number"
-            placeholder="+9477123123"
-            value={formData?.number}
-            onChange={handleChange}
-          />
-          {errors.number && <p style={styles.error}>{errors.number}</p>}
-        </label>
-        <br />
-        <label>
-          Gender:
-          <br />
-          <input
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              padding: "8px",
-              //   width: "100%",
-              boxSizing: "border-box",
-            }}
-            type="text"
-            name="gender"
-            placeholder="M/F"
-            value={formData?.gender}
-            onChange={handleChange}
-          />
-          {errors.gender && <p style={styles.error}>{errors.gender}</p>}
-        </label>
-        <br />
-        <button className=" bg-slate-500 px-5 mt-5 text-white" type="submit">
+        <div className="grid grid-cols-2 w-[480px] items-center">
+          <label>First Name:</label>
+          <div>
+            <input
+              style={{
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                padding: "8px",
+                boxSizing: "border-box",
+              }}
+              type="text"
+              name="first_name"
+              placeholder="First Name"
+              value={first_name}
+              onChange={onChangeFormValue}
+            />
+            {errors.first_name && (
+              <p style={styles.error}>{errors.first_name}</p>
+            )}
+          </div>
+          <label>Last Name:</label>
+          <div>
+            <input
+              style={{
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                padding: "8px",
+                boxSizing: "border-box",
+              }}
+              type="text"
+              name="last_name"
+              placeholder="Last Name"
+              value={last_name}
+              onChange={onChangeFormValue}
+            />
+            {errors.last_name && <p style={styles.error}>{errors.last_name}</p>}
+          </div>
+          <label>Email:</label>
+          <div>
+            <input
+              style={{
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                padding: "8px",
+                boxSizing: "border-box",
+              }}
+              type="email"
+              name="email"
+              placeholder="someone@gmail.com"
+              value={email}
+              onChange={onChangeFormValue}
+            />
+            {errors.email && <p style={styles.error}>{errors.email}</p>}
+          </div>
+
+          <label>Number:</label>
+          <div>
+            <input
+              style={{
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                padding: "8px",
+                boxSizing: "border-box",
+              }}
+              type="text"
+              name="number"
+              placeholder="+9477123123"
+              value={number}
+              onChange={onChangeFormValue}
+            />
+            {errors.number && <p style={styles.error}>{errors.number}</p>}
+          </div>
+
+          <label>Gender:</label>
+          <div>
+            <input
+              style={{
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                padding: "8px",
+                boxSizing: "border-box",
+              }}
+              type="text"
+              name="gender"
+              placeholder="M/F"
+              value={gender}
+              onChange={onChangeFormValue}
+            />
+            {errors.gender && <p style={styles.error}>{errors.gender}</p>}
+          </div>
+        </div>
+        <button className=" bg-slate-500 px-5 mt-5 text-white " type="submit">
           {employeeId ? "Save" : "Add"}
-          <br />
         </button>
       </form>
     </div>

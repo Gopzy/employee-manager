@@ -1,5 +1,5 @@
 "use client";
-import Header from "@/components/header";
+import NavBar from "@/components/navBar";
 import configureStore from "@/store/configureStore";
 import { Inter } from "next/font/google";
 import { Provider } from "react-redux";
@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className={inter.className}>
           <div className="max-w-full  px-6 py-4">
-            <Header />
+            <NavBar />
           </div>
           {children}
         </body>

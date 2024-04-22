@@ -1,15 +1,14 @@
 "use client";
 import EmployeeForm from "@/components/form";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import React from "react";
 
-const page = ({ route }) => {
+const page = () => {
   const searchParam = useSearchParams();
   const id = searchParam.get("id")!;
 
   return (
     <div>
-      {/* Edit page */}
       <EmployeeForm employeeId={id} />
     </div>
   );
