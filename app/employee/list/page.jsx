@@ -41,7 +41,13 @@ const page = () => {
         onToggleClick={() => setIsGrid(!isGrid)}
         grid={isGrid}
       />
-      <div className="grid grid-cols-5 gap-4 py-4">
+      <div
+        className={
+          isGrid
+            ? "grid lg:grid-cols-5 grid-cols-3 gap-8 py-4 items-center justify-center align-middle"
+            : "flex py-10 px-40"
+        }
+      >
         {isGrid ? (
           employeeData.map((employee) => renderEmployeeGrid(employee))
         ) : (

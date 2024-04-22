@@ -7,11 +7,7 @@ const page = () => {
   const searchParam = useSearchParams();
   const id = searchParam.get("id")!;
 
-  return (
-    <div>
-      <EmployeeForm employeeId={id} />
-    </div>
-  );
+  return <EmployeeForm employeeId={id} />;
 };
 
 export default page;

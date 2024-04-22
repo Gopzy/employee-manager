@@ -60,7 +60,9 @@ const EmployeeTable = ({ employees, onDelete }) => {
               </td>
               <td className="px-6 py-4 whitespace-nowrap">{first_name}</td>
               <td className="px-6 py-4 whitespace-nowrap">{last_name}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{email}</td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                {email.substring(0, 15)}
+              </td>
               <td className="px-6 py-4 whitespace-nowrap">{number}</td>
               <td className="px-6 py-4 whitespace-nowrap">
                 {gender === "F" ? "Female" : "Male"}
