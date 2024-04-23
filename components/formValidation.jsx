@@ -17,9 +17,7 @@ function FormValidation(formData, setErrors, setIsFormValid) {
     errors.number = "Phone number is required.";
 
     /* 
-    following regex condition will validate Srilanka numbers starting with 
-     +94,0 and without countrycode or 0
-     eg: +94766673589, 0766673589, 766673589
+    will work for patern eg: +94766673589, 0766673589, 766673589
    */
   } else if (!/^7|0|(?:\+94)[0-9]{9,10}$/.test(number)) {
     errors.number = "Phone number invalid.";

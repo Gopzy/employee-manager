@@ -20,8 +20,8 @@ const formObj = {
 const EmployeeForm = ({ employeeId }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState(formObj);
 
+  const [formData, setFormData] = useState(formObj);
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
 
