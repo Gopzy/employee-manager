@@ -2,6 +2,7 @@ import {
   ADD_EMPLOYEES,
   DELETE_EMPLOYEES,
   GET_EMPLOYEES,
+  SET_GRID_VIEW,
   UPDATE_EMPLOYEES,
 } from "./actionType";
 
@@ -32,4 +33,14 @@ const deleteEmployees = (payload, success, failed) => ({
   failed,
 });
 
-export { getEmployees, deleteEmployees, addEmployees, updateEmployees };
+const setGridView = (payload) => ({
+  type: SET_GRID_VIEW,
+  payload,
+});
+export {
+  getEmployees,
+  deleteEmployees,
+  addEmployees,
+  updateEmployees,
+  setGridView,
+};

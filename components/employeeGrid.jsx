@@ -8,7 +8,6 @@ const EmployeeGrid = ({ employeeData, onDelete, onEdit }) => {
   return (
     // w-80 max-w-md
     <div className="flex flex-col  max-w-md border border-gray-200 rounded-lg overflow-hidden shadow-md">
-      {/* w-80 h-45 */}
       <img src={photo} alt={"title"} className="object-cover w-70 h-40 " />
       <div className="flex  justify-between p-4">
         <div className="">
@@ -20,33 +19,24 @@ const EmployeeGrid = ({ employeeData, onDelete, onEdit }) => {
           </p>
         </div>
         <div className="flex flex-col-1 pt-14 gap-2">
-          <div className="rounded-full bg-red-500 w-12 h-12 flex justify-center items-center cursor-pointer">
+          <div
+            onClick={() => onDelete(_id)}
+            className="rounded-full bg-red-500 w-10 h-10 flex justify-center items-center cursor-pointer"
+          >
             <FontAwesomeIcon
-              onClick={() => onDelete(_id)}
               icon={faTrashAlt}
               className="delete-icon text-white"
             />
           </div>
-          <div className="rounded-full bg-green-400 w-12 h-12 flex justify-center items-center cursor-pointer">
+          <div
+            onClick={() => onEdit(_id)}
+            className="rounded-full bg-green-400 w-10 h-10 flex justify-center items-center cursor-pointer"
+          >
             <FontAwesomeIcon
-              onClick={() => onEdit(_id)}
               icon={faUserEdit}
-              className="delete-icon text-white"
+              className="edit-icon text-white"
             />
           </div>
-          {/* <button
-            onClick={() => onEdit(_id)}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-          >
-            Ed
-          </button> */}
-
-          {/* <button
-            onClick={() => onDelete(_id)}
-            className="px-4 py-2  bg-red-900 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
-          >
-            De
-          </button> */}
         </div>
       </div>
     </div>

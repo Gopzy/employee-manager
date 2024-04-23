@@ -40,7 +40,18 @@ const ButtonHeader = ({ onAddClick, onToggleClick, grid }) => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a4 4 0 100-8 4 4 0 000 8z"
+              d="
+                  M3,3 h4 v4 h-4 v-4
+                  M10,3 h4 v4 h-4 v-4
+                  M17,3 h4 v4 h-4 v-4
+                  M3,10 h4 v4 h-4 v-4
+                  M10,10 h4 v4 h-4 v-4
+                  M17,10 h4 v4 h-4 v-4
+                  M3,17 h4 v4 h-4 v-4
+                  M10,17 h4 v4 h-4 v-4
+                  M17,17 h4 v4 h-4 v-4
+                "
+              fill="white"
             />
           </svg>
         )}

@@ -11,7 +11,7 @@ const formObj = {
   last_name: "",
   email: "",
   number: "",
-  gender: "",
+  gender: "M",
   _id: null,
   // id: 4,
   photo: "https://randomuser.me/api/portraits/men/75.jpg",
@@ -26,6 +26,8 @@ const EmployeeForm = ({ employeeId }) => {
   const [isFormValid, setIsFormValid] = useState(false);
 
   const { employeeData } = useSelector((state) => state?.employees) || [];
+
+  const { first_name, last_name, email, number, gender } = formData;
 
   const editEmployeeObj = employeeData?.filter(
     (employee) => employee._id === employeeId
@@ -44,8 +46,6 @@ const EmployeeForm = ({ employeeId }) => {
       [name]: value,
     }));
   };
-
-  const { first_name, last_name, email, number, gender } = formData;
 
   useEffect(() => {
     Validation(formData, setErrors, setIsFormValid);
@@ -142,20 +142,16 @@ const EmployeeForm = ({ employeeId }) => {
 
           <label>Gender:</label>
           <div>
-            <input
-              style={{
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-                padding: "8px",
-                boxSizing: "border-box",
-              }}
-              type="text"
+            <select
               name="gender"
-              placeholder="M/F"
+              id="_id"
               value={gender}
               onChange={onChangeFormValue}
-            />
-            {errors.gender && <p style={styles.error}>{errors.gender}</p>}
+            >
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select>
+            {/* {errors.gender && <p style={styles.error}>{errors.gender}</p>} */}
           </div>
         </div>
         <button className=" bg-slate-500 px-5 mt-5 text-white " type="submit">

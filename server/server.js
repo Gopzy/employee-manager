@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 const PORT = process.env.PORT || 8080;
 const MONGODB_URI =
   process.env.MONGO_URL || "mongodb://localhost:27017/employeesDB";
-const DB_NAME = process.env.DB_NAME || "employeesDB";
+// const DB_NAME = process.env.DB_NAME || "employeesDB";
 
 // connect mongoDB
 mongoose

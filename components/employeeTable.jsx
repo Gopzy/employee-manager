@@ -1,53 +1,33 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
-const EmployeeTable = ({ employees, onDelete }) => {
+const tableTitle = [
+  "Image",
+  "First Name",
+  "Last Name",
+  "Email",
+  "Phone",
+  "Gender",
+  "Action",
+];
+
+const EmployeeTable = ({ employees, onDelete, onEdit }) => {
+  const getTitle = (title) => {
+    return (
+      <th
+        scope="col"
+        className="px-6 py-3 text-left text-xs border border-gray-300 font-medium text-white uppercase tracking-wider"
+      >
+        {title}
+      </th>
+    );
+  };
+
   return (
-    <table className="min-w-full divide-y divide-gray-200">
+    <table className="min-w-full border border-gray-300 divide-y divide-gray-200">
       <thead className=" bg-green-500">
-        <tr>
-          <th
-            scope="col"
-            className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-          >
-            Image
-          </th>
-          <th
-            scope="col"
-            className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-          >
-            First Name
-          </th>
-          <th
-            scope="col"
-            className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-          >
-            Last Name
-          </th>
-          <th
-            scope="col"
-            className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-          >
-            Email
-          </th>
-          <th
-            scope="col"
-            className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-          >
-            Phone
-          </th>
-          <th
-            scope="col"
-            className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-          >
-            Gender
-          </th>
-          <th
-            scope="col"
-            className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
-          >
-            Action
-          </th>
-        </tr>
+        <tr>{tableTitle.map((title) => getTitle(title))}</tr>
       </thead>
       <tbody className="bg-white divide-y divide-gray-200">
         {employees?.map((employeeData) => {
@@ -55,28 +35,37 @@ const EmployeeTable = ({ employees, onDelete }) => {
             employeeData;
           return (
             <tr key={_id}>
-              <td className="px-6 py-4 whitespace-nowrap">
+              <td className="border border-gray-300 px-6 py-4 whitespace-nowrap">
                 <img className="h-8 w-8 rounded" src={photo} alt={first_name} />
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">{first_name}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{last_name}</td>
-              <td className="px-6 py-4 whitespace-nowrap">
+              <td className=" border border-gray-300 px-6 py-4 whitespace-nowrap">
+                {first_name}
+              </td>
+              <td className=" border border-gray-300 px-6 py-4 whitespace-nowrap">
+                {last_name}
+              </td>
+              <td className=" border border-gray-300 px-6 py-4 whitespace-nowrap">
                 {email.substring(0, 15)}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">{number}</td>
-              <td className="px-6 py-4 whitespace-nowrap">
+              <td className="border border-gray-300 px-6 py-4 whitespace-nowrap">
+                {number}
+              </td>
+              <td className="border border-gray-300 px-6 py-4 whitespace-nowrap">
                 {gender === "F" ? "Female" : "Male"}
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <button className="text-indigo-600 hover:text-indigo-900">
+                <button
+                  onClick={() => onEdit(_id)}
+                  className="  bg-slate-500 rounded-lg px-4 text-white hover:text-indigo-900"
+                >
                   Edit
                 </button>
-                <button
+
+                <FontAwesomeIcon
                   onClick={() => onDelete(_id)}
-                  className="text-red-600 hover:text-red-900 ml-2"
-                >
-                  Delete
-                </button>
+                  icon={faTrashAlt}
+                  className="delete-icon h-5 text-red-600 px-2"
+                />
               </td>
             </tr>
           );

@@ -1,9 +1,13 @@
 "use client";
 import EmployeeGrid from "@/components/employeeGrid";
 import EmployeeTable from "@/components/employeeTable";
-import { deleteEmployees, getEmployees } from "@/store/action/employeeAction";
+import {
+  deleteEmployees,
+  getEmployees,
+  setGridView,
+} from "@/store/action/employeeAction";
 import { useRouter } from "@/node_modules/next/navigation";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ButtonHeader from "@/components/button";
 // import "../../app/globals.css";
@@ -11,10 +15,8 @@ import ButtonHeader from "@/components/button";
 const page = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-
-  const [isGrid, setIsGrid] = useState(true);
-
-  const { employeeData } = useSelector((state) => state?.employees) || [];
+  const { employeeData, gridView } =
+    useSelector((state) => state?.employees) || [];
 
   useEffect(() => {
     dispatch(getEmployees());
@@ -24,12 +26,16 @@ const page = () => {
     dispatch(deleteEmployees(id, () => dispatch(getEmployees())));
   };
 
+  const handleEdit = (id) => router.push(`/employee/edit?id=${id}`);
+
+  const handleToggle = () => dispatch(setGridView(!gridView));
+
   const renderEmployeeGrid = (data) => {
     return (
       <EmployeeGrid
         employeeData={data}
         onDelete={handleDelete}
-        onEdit={(id) => router.push(`/employee/edit?id=${id}`)}
+        onEdit={handleEdit}
       />
     );
   };
@@ -38,20 +44,24 @@ const page = () => {
     <div className="px-6">
       <ButtonHeader
         onAddClick={() => router.push("/employee/add")}
-        onToggleClick={() => setIsGrid(!isGrid)}
-        grid={isGrid}
+        onToggleClick={handleToggle}
+        grid={gridView}
       />
       <div
         className={
-          isGrid
+          gridView
             ? "grid lg:grid-cols-5 grid-cols-3 gap-8 py-4 items-center justify-center align-middle"
             : "flex py-10 px-40"
         }
       >
-        {isGrid ? (
+        {gridView ? (
           employeeData.map((employee) => renderEmployeeGrid(employee))
         ) : (
-          <EmployeeTable employees={employeeData} onDelete={handleDelete} />
+          <EmployeeTable
+            employees={employeeData}
+            onDelete={handleDelete}
+            onEdit={handleEdit}
+          />
         )}
       </div>
     </div>

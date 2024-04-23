@@ -1,6 +1,7 @@
 "use client";
+import { redirect } from "next/navigation";
 import "./globals.css";
 
 export default function Home() {
-  return <div className="px-6">{/* Home page */}</div>;
+  return redirect("/employee/list");
 }
