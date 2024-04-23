@@ -2,15 +2,15 @@ import React from "react";
 
 const ButtonHeader = ({ onAddClick, onToggleClick, grid }) => {
   return (
-    <div className="flex justify-end gap-4 ">
+    <div className="flex justify-end gap-4 pr-10 ">
       <button
         onClick={onAddClick}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+        className="bg-[#6C00EF] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
       >
         Add Employee
       </button>
       <button
-        className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white focus:outline-none"
+        className="w-12 h-12 bg-[#6C00EF] rounded-full flex items-center justify-center text-white focus:outline-none"
         onClick={onToggleClick}
       >
         {grid ? (

@@ -4,7 +4,7 @@ import { addEmployees, updateEmployees } from "@/store/action/employeeAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Validation from "./validation";
+import FormValidation from "./formValidation";
 
 const formObj = {
   first_name: "",
@@ -29,6 +29,8 @@ const EmployeeForm = ({ employeeId }) => {
 
   const { first_name, last_name, email, number, gender } = formData;
 
+  console.log({ isFormValid });
+
   const editEmployeeObj = employeeData?.filter(
     (employee) => employee._id === employeeId
   );
@@ -48,7 +50,7 @@ const EmployeeForm = ({ employeeId }) => {
   };
 
   useEffect(() => {
-    Validation(formData, setErrors, setIsFormValid);
+    FormValidation(formData, setErrors, setIsFormValid);
   }, [first_name, last_name, number, gender, email]);
 
   const handleSubmit = (e) => {
@@ -67,16 +69,15 @@ const EmployeeForm = ({ employeeId }) => {
   return (
     <div className=" px-7 ">
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 w-[480px] items-center">
+        <div className="grid grid-cols-2 w-[480px] gap-0 items-center">
           <label>First Name:</label>
           <div>
             <input
-              style={{
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-                padding: "8px",
-                boxSizing: "border-box",
-              }}
+              className={`${
+                !errors.first_name
+                  ? " border-b-2 border-gray-300"
+                  : " border border-red-500"
+              } bg-slate-200  py-2 px-4 mb-4 w-full text-gray-700 leading-tight focus:outline-none `}
               type="text"
               name="first_name"
               placeholder="First Name"
@@ -90,12 +91,11 @@ const EmployeeForm = ({ employeeId }) => {
           <label>Last Name:</label>
           <div>
             <input
-              style={{
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-                padding: "8px",
-                boxSizing: "border-box",
-              }}
+              className={`${
+                !errors.last_name
+                  ? " border-b-2 border-gray-300"
+                  : " border border-red-500"
+              } bg-slate-200  py-2 px-4 mb-4 w-full text-gray-700 leading-tight focus:outline-none `}
               type="text"
               name="last_name"
               placeholder="Last Name"
@@ -107,12 +107,11 @@ const EmployeeForm = ({ employeeId }) => {
           <label>Email:</label>
           <div>
             <input
-              style={{
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-                padding: "8px",
-                boxSizing: "border-box",
-              }}
+              className={`${
+                !errors.email
+                  ? " border-b-2 border-gray-300"
+                  : " border border-red-500"
+              } bg-slate-200  py-2 px-4 mb-4 w-full text-gray-700 leading-tight focus:outline-none `}
               type="email"
               name="email"
               placeholder="someone@gmail.com"
@@ -125,12 +124,11 @@ const EmployeeForm = ({ employeeId }) => {
           <label>Number:</label>
           <div>
             <input
-              style={{
-                border: "1px solid #ccc",
-                borderRadius: "4px",
-                padding: "8px",
-                boxSizing: "border-box",
-              }}
+              className={`${
+                !errors.number
+                  ? " border-b-2 border-gray-300"
+                  : " border border-red-500"
+              } bg-slate-200  py-2 px-4 mb-4 w-full text-gray-700 leading-tight focus:outline-none `}
               type="text"
               name="number"
               placeholder="+9477123123"
@@ -146,6 +144,7 @@ const EmployeeForm = ({ employeeId }) => {
               name="gender"
               id="_id"
               value={gender}
+              className=" bg-slate-200 border-b-2 border-gray-300 py-2 px-4 mb-4 w-full text-gray-700"
               onChange={onChangeFormValue}
             >
               <option value="M">Male</option>
@@ -154,7 +153,15 @@ const EmployeeForm = ({ employeeId }) => {
             {/* {errors.gender && <p style={styles.error}>{errors.gender}</p>} */}
           </div>
         </div>
-        <button className=" bg-slate-500 px-5 mt-5 text-white " type="submit">
+        <button
+          disabled={!isFormValid}
+          className={`${
+            isFormValid
+              ? "border-[#6C00EF] text-[#6C00EF]"
+              : "border-gray-500 text-gray-500"
+          } px-10 mt-5  p-2 rounded border-2`}
+          type="submit"
+        >
           {employeeId ? "Save" : "Add"}
         </button>
       </form>

@@ -25,32 +25,32 @@ const EmployeeTable = ({ employees, onDelete, onEdit }) => {
   };
 
   return (
-    <table className="min-w-full border border-gray-300 divide-y divide-gray-200">
-      <thead className=" bg-green-500">
+    <table className="min-w-full border bg-[#A7C941] divide-y divide-gray-300">
+      <thead className="bg-[#A7C941]">
         <tr>{tableTitle.map((title) => getTitle(title))}</tr>
       </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
+      <tbody className="bg-white divide-y divide-[#A7C941]">
         {employees?.map((employeeData) => {
           const { photo, first_name, last_name, email, number, gender, _id } =
             employeeData;
           return (
             <tr key={_id}>
-              <td className="border border-gray-300 px-6 py-4 whitespace-nowrap">
+              <td className="border border-[#A7C941] px-6 py-4 whitespace-nowrap">
                 <img className="h-8 w-8 rounded" src={photo} alt={first_name} />
               </td>
-              <td className=" border border-gray-300 px-6 py-4 whitespace-nowrap">
+              <td className=" border border-[#A7C941] px-6 py-4 whitespace-nowrap">
                 {first_name}
               </td>
-              <td className=" border border-gray-300 px-6 py-4 whitespace-nowrap">
+              <td className=" border border-[#A7C941] px-6 py-4 whitespace-nowrap">
                 {last_name}
               </td>
-              <td className=" border border-gray-300 px-6 py-4 whitespace-nowrap">
+              <td className=" border border-[#A7C941] px-6 py-4 whitespace-nowrap">
                 {email.substring(0, 15)}
               </td>
-              <td className="border border-gray-300 px-6 py-4 whitespace-nowrap">
+              <td className="border border-[#A7C941] px-6 py-4 whitespace-nowrap">
                 {number}
               </td>
-              <td className="border border-gray-300 px-6 py-4 whitespace-nowrap">
+              <td className="border border-[#A7C941] px-6 py-4 whitespace-nowrap">
                 {gender === "F" ? "Female" : "Male"}
               </td>
               <td className="px-6 py-4 whitespace-nowrap">

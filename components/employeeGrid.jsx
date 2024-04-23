@@ -1,9 +1,8 @@
-import Link from "next/link";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 
-const EmployeeGrid = ({ employeeData, onDelete, onEdit }) => {
+const EmployeeGridItem = ({ employeeData, onDelete, onEdit }) => {
   const { photo, first_name, email, number, gender, _id } = employeeData;
   return (
     // w-80 max-w-md
@@ -12,7 +11,7 @@ const EmployeeGrid = ({ employeeData, onDelete, onEdit }) => {
       <div className="flex  justify-between p-4">
         <div className="">
           <h2 className="text-lg font-semibold">{first_name}</h2>
-          <p className="text-sm text-gray-600">{email.substring(0, 15)}</p>
+          <p className="text-sm text-gray-600">{email.substring(0, 13)}</p>
           <p className="text-sm text-gray-600">{number}</p>
           <p className="text-sm text-gray-600">
             {gender === "F" ? "Female" : "Male"}
@@ -43,4 +42,4 @@ const EmployeeGrid = ({ employeeData, onDelete, onEdit }) => {
   );
 };
 
-export default EmployeeGrid;
+export default EmployeeGridItem;

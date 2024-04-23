@@ -12,7 +12,6 @@ const initialState = {
 };
 
 const employeesReducer = (state = initialState, action) => {
-  console.log("employeesReducer ::::", action.payload);
   switch (action.type) {
     case GET_EMPLOYEES:
       return {
