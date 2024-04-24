@@ -8,7 +8,11 @@ const employeeSchema = new mongoose.Schema({
   email: { type: String, required: true },
   number: { type: String, required: true },
   gender: { type: String, required: true },
-  id: { type: String, required: false },
+  id: {
+    type: String,
+    //  enum: ["male", "female", "other"],
+    required: false,
+  },
   photo: { type: String, required: false },
 });
 

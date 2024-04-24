@@ -1,3 +1,5 @@
+import * as Yup from "yup";
+
 function FormValidation(formData, setErrors, setIsFormValid) {
   const { first_name, last_name, email, number, gender } = formData;
 
@@ -37,3 +39,26 @@ function FormValidation(formData, setErrors, setIsFormValid) {
 }
 
 export default FormValidation;
+
+// Yup schema to validate the form
+export const schema = Yup.object().shape({
+  first_name: Yup.string()
+    .required("First name is required")
+    .matches(
+      /^[a-zA-Z]{6,10}$/,
+      "First name should only contain alphabets and between 6 and 10 characters long"
+    ),
+  last_name: Yup.string()
+    .required("Last name is required")
+    .matches(
+      /^[a-zA-Z]{6,10}$/,
+      "Last name should only contain alphabets and between 6 and 10 characters long"
+    ),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  number: Yup.string()
+    .matches(/^7|0|(?:\+94)[0-9]{9,10}$/, "Invalid number")
+    .required("Number is required"),
+  gender: Yup.string().required("Gender is required"),
+});

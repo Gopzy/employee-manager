@@ -53,7 +53,7 @@ const page = () => {
       <div
         className={
           gridView
-            ? "grid lg:grid-cols-5 md:grid-cols-4 grid-cols-3 px-20 gap-8 py-4 items-center justify-center align-middle"
+            ? "flex flex-row flex-wrap gap-5 pt-5 px-20"
             : "flex py-10 px-40"
         }
       >

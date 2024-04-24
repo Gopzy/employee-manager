@@ -6,7 +6,7 @@ const EmployeeGridItem = ({ employeeData, onDelete, onEdit }) => {
   const { photo, first_name, email, number, gender, _id } = employeeData;
   return (
     // w-80 max-w-md
-    <div className="flex flex-col  max-w-md border border-gray-200 rounded-lg overflow-hidden shadow-md">
+    <div className="flex flex-col min-w-[250px]  max-w-md border border-gray-200 rounded-lg overflow-hidden shadow-md">
       <img src={photo} alt={"title"} className="object-cover w-70 h-40 " />
       <div className="flex  justify-between p-4">
         <div className="">
