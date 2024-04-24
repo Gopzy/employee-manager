@@ -6,12 +6,12 @@ const employeeSchema = new mongoose.Schema({
   last_name: { type: String, required: true },
   email: { type: String, required: true },
   number: { type: String, required: true },
-  gender: { type: String, required: true },
-  id: {
+  gender: {
     type: String,
     //  enum: ["male", "female", "other"],
-    required: false,
+    required: true,
   },
+  id: { type: String, required: false },
   photo: { type: String, required: false },
 });
 

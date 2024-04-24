@@ -44,16 +44,10 @@ export default FormValidation;
 export const schema = Yup.object().shape({
   first_name: Yup.string()
     .required("First name is required")
-    .matches(
-      /^[a-zA-Z]{6,10}$/,
-      "First name should only contain alphabets and between 6 and 10 characters long"
-    ),
+    .matches(/^[a-zA-Z]{6,10}$/, "Invalid Name"),
   last_name: Yup.string()
     .required("Last name is required")
-    .matches(
-      /^[a-zA-Z]{6,10}$/,
-      "Last name should only contain alphabets and between 6 and 10 characters long"
-    ),
+    .matches(/^[a-zA-Z]{6,10}$/, "Invalid Name"),
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
