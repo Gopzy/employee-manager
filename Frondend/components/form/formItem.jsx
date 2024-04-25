@@ -13,7 +13,7 @@ const FormItem = ({ data, onChange, errors, touched }) => {
           onChange={onChange}
           name={fieldName}
           type="text"
-          as={type}
+          // as={type}
           className={`${
             errors[fieldName] && touched[fieldName]
               ? "border border-red-500"

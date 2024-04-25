@@ -1,8 +1,9 @@
 import React from "react";
 
-const BtnCircle = ({ title, onClick, type, btnStyle, icon }) => {
+const BtnCircle = ({ title, onClick, type, btnStyle, icon, testID }) => {
   return (
     <button
+      testID="test-btn"
       onClick={onClick}
       type={type}
       className={`${
