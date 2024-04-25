@@ -12,7 +12,7 @@ export type employeeDataType = {
   last_name: string;
   email: string;
   number: number;
-  gender: "M" | "F";
+  gender: string | "M" | "F";
   id?: string;
   _id?: string;
   photo?: string;

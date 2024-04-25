@@ -7,7 +7,7 @@ import {
   UPDATE_EMPLOYEES,
 } from "./actionType";
 
-const getEmployees = (success: () => void, failed: () => void) => ({
+const getEmployees = (success?: () => void, failed?: () => void) => ({
   type: GET_EMPLOYEES,
   success,
   failed,

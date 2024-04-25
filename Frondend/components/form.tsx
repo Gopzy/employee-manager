@@ -17,8 +17,7 @@ const EmployeeForm = ({ employeeId }: { employeeId?: string }) => {
 
   const [formData, setFormData] = useState<employeeDataType>(initialFormData);
 
-  const employeeData =
-    useSelector((state: Reducers) => state?.employees?.employeeData) || [];
+  const { employeeData } = useSelector((state: Reducers) => state?.employees);
 
   const editEmployeeObj = employeeData?.filter(
     (employee) => employee._id === employeeId

@@ -12,7 +12,7 @@ const initialFormData = {
   first_name: "",
   last_name: "",
   email: "",
-  number: "",
+  number: null,
   gender: "M",
   _id: null,
   // id: 4,

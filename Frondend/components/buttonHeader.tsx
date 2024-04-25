@@ -7,8 +7,8 @@ const ButtonHeader = ({
   onToggleClick,
   grid,
 }: {
-  onAddClick: MouseEventHandler<HTMLButtonElement>;
-  onToggleClick: MouseEventHandler<HTMLButtonElement>;
+  onAddClick: () => void;
+  onToggleClick: () => void;
   grid: boolean;
 }) => {
   return (

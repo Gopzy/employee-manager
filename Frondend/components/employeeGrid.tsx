@@ -10,8 +10,8 @@ const EmployeeGridItem = ({
   onEdit,
 }: {
   employeeData: employeeDataType;
-  onDelete: Function;
-  onEdit: Function;
+  onDelete: (string) => void;
+  onEdit: (string) => void;
 }) => {
   const { photo, first_name, email, number, gender, _id } = employeeData;
   return (

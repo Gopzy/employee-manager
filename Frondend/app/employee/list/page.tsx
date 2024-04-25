@@ -16,8 +16,9 @@ import { employeeDataType, Reducers } from "@/types/types";
 const page = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { employeeData, gridView } =
-    useSelector((state: Reducers) => state?.employees) || [];
+  const { employeeData, gridView } = useSelector(
+    (state: Reducers) => state?.employees
+  );
 
   useEffect(() => {
     dispatch(getEmployees());
