@@ -9,7 +9,7 @@ import {
 import { useRouter } from "@/node_modules/next/navigation";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ButtonHeader from "@/components/button";
+import ButtonHeader from "@/components/ButtonHeader";
 // import "../../app/globals.css";
 
 const page = () => {
@@ -33,10 +33,18 @@ const page = () => {
 
   const handleToggle = () => dispatch(setGridView(!gridView));
 
-  const renderEmployeeGrid = (data) => {
+  const renderEmployees = () => {
+    if (gridView)
+      return employeeData.map((employee) => (
+        <EmployeeGridItem
+          employeeData={employee}
+          onDelete={handleDelete}
+          onEdit={handleEdit}
+        />
+      ));
     return (
-      <EmployeeGridItem
-        employeeData={data}
+      <EmployeeTable
+        employees={employeeData}
         onDelete={handleDelete}
         onEdit={handleEdit}
       />
@@ -57,15 +65,7 @@ const page = () => {
             : "flex py-10 px-40"
         }
       >
-        {gridView ? (
-          employeeData.map((employee) => renderEmployeeGrid(employee))
-        ) : (
-          <EmployeeTable
-            employees={employeeData}
-            onDelete={handleDelete}
-            onEdit={handleEdit}
-          />
-        )}
+        {renderEmployees()}
       </div>
     </div>
   );

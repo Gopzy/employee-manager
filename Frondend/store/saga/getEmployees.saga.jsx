@@ -31,7 +31,7 @@ export function* getEmployeesSaga({ success, failed }) {
 
 export function* addEmployeesSaga({ payload, success, failed }) {
   try {
-    yield call(axios.post, "http://localhost:8080/api/employees", payload);
+    yield call(axios.post, EMPLOYEES_API, payload);
 
     success?.();
     yield put({ type: ADD_EMPLOYEES_SUCCESS });
@@ -47,11 +47,7 @@ export function* updateEmployeesSaga({
   failed,
 }) {
   try {
-    yield call(
-      axios.put,
-      `http://localhost:8080/api/employees/${id}`,
-      requestParams
-    );
+    yield call(axios.put, `${EMPLOYEES_API}/${id}`, requestParams);
 
     success?.();
     yield put({ type: UPDATE_EMPLOYEES_SUCCESS });
@@ -63,7 +59,7 @@ export function* updateEmployeesSaga({
 
 export function* deleteEmployeesSaga({ payload, success, failed }) {
   try {
-    yield call(axios.delete, `http://localhost:8080/api/employees/${payload}`);
+    yield call(axios.delete, `${EMPLOYEES_API}/${payload}`);
 
     success?.();
     yield put({ type: DELETE_EMPLOYEES_SUCCESS });

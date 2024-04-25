@@ -8,7 +8,7 @@ const FormFields = [
   { title: "Gender", fieldName: "gender", type: "select" },
 ];
 
-const FormObj = {
+const initialFormData = {
   first_name: "",
   last_name: "",
   email: "",
@@ -19,4 +19,4 @@ const FormObj = {
   photo: "https://randomuser.me/api/portraits/men/75.jpg",
 };
 
-export { FormFields, FormObj };
+export { FormFields, initialFormData };
