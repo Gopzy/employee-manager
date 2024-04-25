@@ -15,7 +15,7 @@ import {
   UPDATE_EMPLOYEES_FAILED,
 } from "../action/actionType";
 
-const EMPLOYEES_API = "http://localhost:8080/api/employees";
+const EMPLOYEES_API = "http://localhost:8080/api/employee";
 
 export function* getEmployeesSaga({ success, failed }) {
   try {

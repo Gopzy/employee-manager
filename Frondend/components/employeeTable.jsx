@@ -13,7 +13,7 @@ const tableTitle = [
 ];
 
 const EmployeeTable = ({ employees, onDelete, onEdit }) => {
-  const getTitle = (title) => {
+  const renderTableTitle = (title) => {
     return (
       <th
         scope="col"
@@ -27,7 +27,7 @@ const EmployeeTable = ({ employees, onDelete, onEdit }) => {
   return (
     <table className="min-w-full border bg-[#A7C941] divide-y divide-gray-300">
       <thead className="bg-[#A7C941]">
-        <tr>{tableTitle.map((title) => getTitle(title))}</tr>
+        <tr>{tableTitle.map((title) => renderTableTitle(title))}</tr>
       </thead>
       <tbody className="bg-white divide-y divide-[#A7C941]">
         {employees?.map((employeeData) => {
@@ -36,7 +36,11 @@ const EmployeeTable = ({ employees, onDelete, onEdit }) => {
           return (
             <tr key={_id}>
               <td className="border border-[#A7C941] px-6 py-4 whitespace-nowrap">
-                <img className="h-8 w-8 rounded" src={photo} alt={first_name} />
+                <img
+                  className="h-10 w-10 rounded"
+                  src={photo}
+                  alt={first_name}
+                />
               </td>
               <td className=" border border-[#A7C941] px-6 py-4 whitespace-nowrap">
                 {first_name}
