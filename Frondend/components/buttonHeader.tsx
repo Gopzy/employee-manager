@@ -1,8 +1,16 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import BtnCircle from "./button/btnCircle";
 import MenuIcon from "./svg/menuIcon";
 
-const ButtonHeader = ({ onAddClick, onToggleClick, grid }) => {
+const ButtonHeader = ({
+  onAddClick,
+  onToggleClick,
+  grid,
+}: {
+  onAddClick: MouseEventHandler<HTMLButtonElement>;
+  onToggleClick: MouseEventHandler<HTMLButtonElement>;
+  grid: boolean;
+}) => {
   return (
     <div className="flex justify-end gap-4 pr-10 ">
       <BtnCircle

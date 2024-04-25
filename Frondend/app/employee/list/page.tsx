@@ -10,13 +10,14 @@ import { useRouter } from "@/node_modules/next/navigation";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ButtonHeader from "@/components/ButtonHeader";
+import { employeeDataType, Reducers } from "@/types/types";
 // import "../../app/globals.css";
 
 const page = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const { employeeData, gridView } =
-    useSelector((state) => state?.employees) || [];
+    useSelector((state: Reducers) => state?.employees) || [];
 
   useEffect(() => {
     dispatch(getEmployees());
@@ -35,7 +36,7 @@ const page = () => {
 
   const renderEmployees = () => {
     if (gridView)
-      return employeeData.map((employee) => (
+      return employeeData.map((employee: employeeDataType) => (
         <EmployeeGridItem
           employeeData={employee}
           onDelete={handleDelete}

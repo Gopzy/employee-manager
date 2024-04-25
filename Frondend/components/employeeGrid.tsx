@@ -2,8 +2,17 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import BtnCircle from "./button/btnCircle";
+import { employeeDataType } from "@/types/types";
 
-const EmployeeGridItem = ({ employeeData, onDelete, onEdit }) => {
+const EmployeeGridItem = ({
+  employeeData,
+  onDelete,
+  onEdit,
+}: {
+  employeeData: employeeDataType;
+  onDelete: Function;
+  onEdit: Function;
+}) => {
   const { photo, first_name, email, number, gender, _id } = employeeData;
   return (
     <div className="flex flex-col min-w-[250px]  max-w-md border border-gray-200 rounded-lg overflow-hidden shadow-md">

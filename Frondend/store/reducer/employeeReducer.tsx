@@ -1,3 +1,4 @@
+import { employeeDataType, initialReducerType } from "@/types/types";
 import {
   GET_EMPLOYEES,
   GET_EMPLOYEES_FAILED,
@@ -5,14 +6,17 @@ import {
   SET_GRID_VIEW,
 } from "../action/actionType";
 
-const initialState = {
+const initialState: initialReducerType = {
   employeeData: [],
   employeeData_error: null,
   gridView: true,
 };
 
-const employeesReducer = (state = initialState, action) => {
-  switch (action.type) {
+const employeesReducer = (
+  state = initialState,
+  { type, payload }: { type: string; payload: employeeDataType | boolean }
+) => {
+  switch (type) {
     case GET_EMPLOYEES:
       return {
         ...state,
@@ -21,18 +25,18 @@ const employeesReducer = (state = initialState, action) => {
     case GET_EMPLOYEES_SUCCESS:
       return {
         ...state,
-        employeeData: action.payload,
+        employeeData: payload,
       };
     case GET_EMPLOYEES_FAILED:
       return {
         ...state,
-        employeeData_error: action.payload,
+        employeeData_error: payload,
       };
 
     case SET_GRID_VIEW:
       return {
         ...state,
-        gridView: action.payload,
+        gridView: payload,
       };
     default:
       return state;

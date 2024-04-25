@@ -7,16 +7,18 @@ import { useRouter } from "next/navigation";
 import { schema } from "./form/validation";
 import { Formik, Form, useFormik } from "formik";
 import { FormFields, initialFormData } from "../constants/index";
-import FormItem from "../components/form/formItem";
+import FormItem from "./form/formItem";
 import BtnCircle from "./button/btnCircle";
+import { employeeDataType, formDataType, Reducers } from "@/types/types";
 
-const EmployeeForm = ({ employeeId }) => {
+const EmployeeForm = ({ employeeId }: { employeeId?: string }) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const [formData, setFormData] = useState(initialFormData);
+  const [formData, setFormData] = useState<employeeDataType>(initialFormData);
 
-  const { employeeData } = useSelector((state) => state?.employees) || [];
+  const employeeData =
+    useSelector((state: Reducers) => state?.employees?.employeeData) || [];
 
   const editEmployeeObj = employeeData?.filter(
     (employee) => employee._id === employeeId
@@ -47,7 +49,7 @@ const EmployeeForm = ({ employeeId }) => {
     );
   };
 
-  const renderFormItems = (formData, errors, touched) => {
+  const renderFormItems = (formData: formDataType, errors: {}, touched: {}) => {
     return (
       <FormItem
         data={formData}

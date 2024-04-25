@@ -1,3 +1,4 @@
+import { TSaga } from "@/types/types";
 import axios from "axios";
 import { call, put, takeLatest } from "redux-saga/effects";
 import {
@@ -17,7 +18,7 @@ import {
 
 const EMPLOYEES_API = "http://localhost:8080/api/employee";
 
-export function* getEmployeesSaga({ success, failed }) {
+export function* getEmployeesSaga({ success, failed }: TSaga) {
   try {
     const { data } = yield call(axios.get, EMPLOYEES_API);
 
@@ -29,7 +30,7 @@ export function* getEmployeesSaga({ success, failed }) {
   }
 }
 
-export function* addEmployeesSaga({ payload, success, failed }) {
+export function* addEmployeesSaga({ payload, success, failed }: TSaga) {
   try {
     yield call(axios.post, EMPLOYEES_API, payload);
 
@@ -45,7 +46,7 @@ export function* updateEmployeesSaga({
   payload: { id, requestParams },
   success,
   failed,
-}) {
+}: TSaga) {
   try {
     yield call(axios.put, `${EMPLOYEES_API}/${id}`, requestParams);
 
@@ -57,7 +58,7 @@ export function* updateEmployeesSaga({
   }
 }
 
-export function* deleteEmployeesSaga({ payload, success, failed }) {
+export function* deleteEmployeesSaga({ payload, success, failed }: TSaga) {
   try {
     yield call(axios.delete, `${EMPLOYEES_API}/${payload}`);
 

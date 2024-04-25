@@ -1,9 +1,20 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 
-const BtnCircle = ({ title, onClick, type, btnStyle, icon, testID }) => {
+const BtnCircle = ({
+  title,
+  onClick,
+  type,
+  btnStyle,
+  icon,
+}: {
+  title?: string;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  type?: "submit" | "reset" | "button";
+  btnStyle?: any;
+  icon?: any;
+}) => {
   return (
     <button
-      testID="test-btn"
       onClick={onClick}
       type={type}
       className={`${

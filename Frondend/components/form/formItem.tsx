@@ -1,7 +1,18 @@
-import React from "react";
-import { Field, ErrorMessage } from "formik";
+import React, { MouseEventHandler } from "react";
+import { Field, ErrorMessage, FormikTouched, FormikErrors } from "formik";
+import { formDataType } from "@/types/types";
 
-const FormItem = ({ data, onChange, errors, touched }) => {
+const FormItem = ({
+  data,
+  onChange,
+  errors,
+  touched,
+}: {
+  data: formDataType;
+  onChange: MouseEventHandler<HTMLButtonElement>;
+  errors: {};
+  touched: {};
+}) => {
   const { fieldName, title, type } = data;
   const selectType = type === "select";
 
@@ -13,7 +24,7 @@ const FormItem = ({ data, onChange, errors, touched }) => {
           onChange={onChange}
           name={fieldName}
           type="text"
-          // as={type}
+          as={type}
           className={`${
             errors[fieldName] && touched[fieldName]
               ? "border border-red-500"
