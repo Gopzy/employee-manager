@@ -25,16 +25,16 @@ How to install and Run the App
 
 Step 1:
 
-cd Backend :Go to Back End directory:
-npm install or yarn :Install the dependencies:
-npm run dev :Start the Server:
+cd Backend
+npm install or yarn
+npm run dev
 
 optional : npm run test : to run the unit tests
 
 Step 2:
 
-cd Frontend :Go to Front End directory:
-npm install or yarn :Install the dependencies:
-npm run dev :Start the NextJs app:
+cd Frontend
+npm install or yarn
+npm run dev
 
 Node: MongoDB atlas is being used as cloud Database, can be changed to run it locally, by replacing the local url from .env.
