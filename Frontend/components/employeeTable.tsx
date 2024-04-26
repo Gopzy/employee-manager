@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { employeeDataType } from "@/types/types";
@@ -18,10 +18,9 @@ const EmployeeTable = ({
   onDelete,
   onEdit,
 }: {
-  // MouseEventHandler<HTMLButtonElement>
   employees: [employeeDataType];
-  onDelete: any;
-  onEdit: any;
+  onDelete: (string) => void;
+  onEdit: (string) => void;
 }) => {
   const renderTableTitle = (title) => {
     return (

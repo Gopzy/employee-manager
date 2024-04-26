@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import BtnCircle from "./button/btnCircle";
 import MenuIcon from "./svg/menuIcon";
 

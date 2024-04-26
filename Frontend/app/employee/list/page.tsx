@@ -11,7 +11,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ButtonHeader from "@/components/ButtonHeader";
 import { employeeDataType, Reducers } from "@/types/types";
-// import "../../app/globals.css";
 
 const page = () => {
   const router = useRouter();

@@ -1,5 +1,5 @@
-import React, { MouseEventHandler } from "react";
-import { Field, ErrorMessage, FormikTouched, FormikErrors } from "formik";
+import React from "react";
+import { Field, ErrorMessage } from "formik";
 import { formDataType } from "@/types/types";
 
 const FormItem = ({

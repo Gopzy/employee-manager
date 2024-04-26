@@ -14,6 +14,7 @@ const EmployeeGridItem = ({
   onEdit: (string) => void;
 }) => {
   const { photo, first_name, email, number, gender, _id } = employeeData;
+
   return (
     <div className="flex flex-col min-w-[250px]  max-w-md border border-gray-200 rounded-lg overflow-hidden shadow-md">
       <img src={photo} alt={"title"} className="object-cover w-70 h-40 " />
