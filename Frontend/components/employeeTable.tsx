@@ -39,50 +39,50 @@ const EmployeeTable = ({
         <tr>{tableTitle.map((title) => renderTableTitle(title))}</tr>
       </thead>
       <tbody className="bg-white divide-y divide-[#A7C941]">
-        {employees?.map((employeeData) => {
-          const { photo, first_name, last_name, email, number, gender, _id } =
-            employeeData;
-          return (
-            <tr key={_id}>
-              <td className="border border-[#A7C941] px-6 py-4 whitespace-nowrap">
-                <img
-                  className="h-10 w-10 rounded"
-                  src={photo}
-                  alt={first_name}
-                />
-              </td>
-              <td className=" border border-[#A7C941] px-6 py-4 whitespace-nowrap">
-                {first_name}
-              </td>
-              <td className=" border border-[#A7C941] px-6 py-4 whitespace-nowrap">
-                {last_name}
-              </td>
-              <td className=" border border-[#A7C941] px-6 py-4 whitespace-nowrap">
-                {email.substring(0, 15)}
-              </td>
-              <td className="border border-[#A7C941] px-6 py-4 whitespace-nowrap">
-                {number}
-              </td>
-              <td className="border border-[#A7C941] px-6 py-4 whitespace-nowrap">
-                {gender === "F" ? "Female" : "Male"}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <button
-                  onClick={() => onEdit(_id)}
-                  className="  bg-slate-500 rounded-lg px-4 text-white hover:text-indigo-900"
-                >
-                  Edit
-                </button>
+        {employees?.map(
+          ({ photo, first_name, last_name, email, number, gender, _id }) => {
+            return (
+              <tr key={_id}>
+                <td className="border border-[#A7C941] px-6 py-4 whitespace-nowrap">
+                  <img
+                    className="h-10 w-10 rounded"
+                    src={photo}
+                    alt={first_name}
+                  />
+                </td>
+                <td className=" border border-[#A7C941] px-6 py-4 whitespace-nowrap">
+                  {first_name}
+                </td>
+                <td className=" border border-[#A7C941] px-6 py-4 whitespace-nowrap">
+                  {last_name}
+                </td>
+                <td className=" border border-[#A7C941] px-6 py-4 whitespace-nowrap">
+                  {email.substring(0, 15)}
+                </td>
+                <td className="border border-[#A7C941] px-6 py-4 whitespace-nowrap">
+                  {number}
+                </td>
+                <td className="border border-[#A7C941] px-6 py-4 whitespace-nowrap">
+                  {gender === "F" ? "Female" : "Male"}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <button
+                    onClick={() => onEdit(_id)}
+                    className="  bg-slate-500 rounded-lg px-4 text-white hover:text-indigo-900"
+                  >
+                    Edit
+                  </button>
 
-                <FontAwesomeIcon
-                  onClick={() => onDelete(_id)}
-                  icon={faTrashAlt}
-                  className="delete-icon h-5 text-red-600 px-2"
-                />
-              </td>
-            </tr>
-          );
-        })}
+                  <FontAwesomeIcon
+                    onClick={() => onDelete(_id)}
+                    icon={faTrashAlt}
+                    className="delete-icon h-5 text-red-600 px-2"
+                  />
+                </td>
+              </tr>
+            );
+          }
+        )}
       </tbody>
     </table>
   );
