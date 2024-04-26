@@ -8,7 +8,7 @@ Tech stack used:
 
 Back End:
 
-    NodeJs : Framework to Develop the FrontEnd
+    NodeJs
     ExpressJs
     MongoDB + Mongoose + Atlas
 
