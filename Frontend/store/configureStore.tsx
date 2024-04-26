@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import employeesReducer from "./reducer/employeeReducer";
-import { watchGetEmployee } from "./saga/getEmployees.saga";
+import { watchGetEmployee } from "./saga/employees.saga";
 
 const sagaMiddleware = createSagaMiddleware();
 

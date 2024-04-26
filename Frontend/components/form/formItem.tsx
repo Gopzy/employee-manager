@@ -9,7 +9,7 @@ const FormItem = ({
   touched,
 }: {
   data: formDataType;
-  onChange: MouseEventHandler<HTMLButtonElement>;
+  onChange: (string) => void;
   errors: {};
   touched: {};
 }) => {

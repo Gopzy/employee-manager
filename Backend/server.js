@@ -11,11 +11,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const PORT = process.env.PORT;
-const MONGODB_URI = process.env.MONGO_URL;
+const MONGO_URL_ATLAS = process.env.MONGO_URL_ATLAS; // use MONGO_URL_LOCAL to run the mongoDB from local
 
 // connect mongoDB DB
 mongoose
-  .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(MONGO_URL_ATLAS, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connected to MongoDB");
   })

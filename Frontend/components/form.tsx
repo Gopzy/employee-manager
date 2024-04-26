@@ -23,6 +23,8 @@ const EmployeeForm = ({ employeeId }: { employeeId?: string }) => {
     (employee) => employee._id === employeeId
   );
 
+  const navigateEmployeeList = () => router.push("/employee/list");
+
   useEffect(() => {
     if (editEmployeeObj.length) {
       setFormData(editEmployeeObj?.[0]);
@@ -43,8 +45,8 @@ const EmployeeForm = ({ employeeId }: { employeeId?: string }) => {
 
     dispatch(
       employeeId
-        ? updateEmployees(updatePayload, () => router.push("/employee/list"))
-        : addEmployees(formData, () => router.push("/employee/list"))
+        ? updateEmployees(updatePayload, navigateEmployeeList)
+        : addEmployees(formData, navigateEmployeeList)
     );
   };
 
@@ -64,23 +66,30 @@ const EmployeeForm = ({ employeeId }: { employeeId?: string }) => {
       enableReinitialize
       initialValues={formData}
       validationSchema={schema}
-      validateOnBlur={true}
-      // validateOnChange={true}
       onSubmit={handleSubmit}
     >
       {({ errors, touched, handleChange, values }) => (
         <div className=" flex flex-col  items-center  ">
-          <Form className=" max-w-[500px] border-2 rounded-3xl p-10">
-            {FormFields.map((formData) =>
-              renderFormItems(formData, errors, touched)
-            )}
-
+          <Form className=" max-w-[500px] border-2 rounded-3xl p-5">
             <div className="flex justify-end">
               <BtnCircle
-                type="submit"
-                title={employeeId ? "Save" : "Add"}
-                btnStyle="border-[#6C00EF] text-[#6C00EF] px-10 mt-5  p-2 rounded border-2  "
+                title="List View"
+                onClick={navigateEmployeeList}
+                btnStyle=" bg-[#6C00EF] hover:bg-blue-700 py-2 px-6  text-white rounded-full mb-5 "
               />
+            </div>
+            <div className="px-8 py-3">
+              {FormFields.map((formData) =>
+                renderFormItems(formData, errors, touched)
+              )}
+
+              <div className="flex justify-end">
+                <BtnCircle
+                  type="submit"
+                  title={employeeId ? "Save" : "Add"}
+                  btnStyle="border-[#6C00EF] text-[#6C00EF] px-10 mt-5  p-2 rounded border-2  "
+                />
+              </div>
             </div>
           </Form>
         </div>

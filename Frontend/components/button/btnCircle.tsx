@@ -8,7 +8,7 @@ const BtnCircle = ({
   icon,
 }: {
   title?: string;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: () => void;
   type?: "submit" | "reset" | "button";
   btnStyle?: any;
   icon?: any;
