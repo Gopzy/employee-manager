@@ -75,7 +75,7 @@ const EmployeeForm = ({ employeeId }: { employeeId?: string }) => {
               <BtnCircle
                 title="List View"
                 onClick={navigateEmployeeList}
-                btnStyle=" bg-[#6C00EF] hover:bg-blue-700 py-2 px-6  text-white rounded-full mb-5 "
+                btnStyle=" bg-[#6C00EF] hover:bg-blue-700 py-2 px-8  text-white rounded-full mb-5 "
               />
             </div>
             <div className="px-8 py-3">
