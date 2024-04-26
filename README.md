@@ -26,7 +26,9 @@ How to install and Run the App
 Step 1:
 
 cd Backend
+
 npm install or yarn
+
 npm run dev
 
 optional : npm run test : to run the unit tests
@@ -34,7 +36,9 @@ optional : npm run test : to run the unit tests
 Step 2:
 
 cd Frontend
+
 npm install or yarn
+
 npm run dev
 
 Node: MongoDB atlas is being used as cloud Database, can be changed to run it locally, by replacing the local url from .env.
