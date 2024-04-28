@@ -68,7 +68,7 @@ const EmployeeForm = ({ employeeId }: { employeeId?: string }) => {
       validationSchema={schema}
       onSubmit={handleSubmit}
     >
-      {({ errors, touched, handleChange, values }) => (
+      {({ errors, touched }) => (
         <div className=" flex flex-col  items-center  ">
           <Form className=" max-w-[500px] border-2 rounded-3xl p-5">
             <div className="flex justify-end">
