@@ -22,6 +22,7 @@ export type formDataType = {
   fieldName: string;
   title: string;
   type: any;
+  id: number;
 };
 
 export type TSaga = {

@@ -13,11 +13,11 @@ const FormItem = ({
   errors: {};
   touched: {};
 }) => {
-  const { fieldName, title, type } = data;
+  const { fieldName, title, type, id } = data;
   const selectType = type === "select";
 
   return (
-    <div className=" flex flex-row flex-wrap justify-between mb-4">
+    <div key={id} className=" flex flex-row flex-wrap justify-between mb-4">
       <label>{title}</label>
       <div className={`flex flex-col ml-7 ${selectType ? "w-[66%]" : ""}`}>
         <Field

@@ -1,11 +1,11 @@
 // Form constants
 
 const FormFields = [
-  { title: "First Name", fieldName: "first_name", type: "input" },
-  { title: "Last Name", fieldName: "last_name", type: "input" },
-  { title: "Email", fieldName: "email", type: "input" },
-  { title: "Number", fieldName: "number", type: "input" },
-  { title: "Gender", fieldName: "gender", type: "select" },
+  { id: 1, title: "First Name", fieldName: "first_name", type: "input" },
+  { id: 2, title: "Last Name", fieldName: "last_name", type: "input" },
+  { id: 3, title: "Email", fieldName: "email", type: "input" },
+  { id: 4, title: "Number", fieldName: "number", type: "input" },
+  { id: 5, title: "Gender", fieldName: "gender", type: "select" },
 ];
 
 const initialFormData = {
